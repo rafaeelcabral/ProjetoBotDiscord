@@ -47,12 +47,23 @@ client.login(TOKEN);
 
 //LISTENER DE INTERAÇÕES COM O BOT
 
-client.on(Events.InteractionCreate, interacation =>{
+client.on(Events.InteractionCreate, async interacation =>{
+
 	if(!interacation.isChatInputCommand()){
 		return;
-	}else{
-		console.log(interacation);
+	}	
+	
+	const command = interacation.client.commands.get(interacation.commandName);
+	if(!command){
+		console.log("comando não encontrado!");
 	}
+
+	try{
+		await command.execute(interacation);
+	}catch(error){
+		console.error(error);
+	}
+
 })
 
 
