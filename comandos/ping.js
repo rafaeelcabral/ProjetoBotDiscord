@@ -7,6 +7,6 @@ module.exports = {
         .setDescription("Responde Pong!") ,
 
     async execute(interaction){
-        await interaction.replay("pong!");    
+        await interaction.reply("pong!");    
     }
 }    

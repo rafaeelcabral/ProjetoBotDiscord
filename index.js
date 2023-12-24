@@ -47,24 +47,24 @@ client.login(TOKEN);
 
 //LISTENER DE INTERAÇÕES COM O BOT
 
-client.on(Events.InteractionCreate, async interacation =>{
-
-	if(!interacation.isChatInputCommand()){
-		return;
-	}	
-	
-	const command = interacation.client.commands.get(interacation.commandName);
-	if(!command){
-		console.log("comando não encontrado!");
+client.on(Events.InteractionCreate, async interaction => {
+	if(!interaction.isCommand()) {
+	  return;
 	}
-
+  
+	const command = client.commands.get(interaction.commandName);
+	if(!command) {
+	  console.error("Comando não encontrado!");
+	  return;
+	}
+  
 	try{
-		await command.execute(interacation);
-	}catch(error){
-		console.error(error);
+	  await command.execute(interaction);
+	}catch (error) {
+	  console.error(error);
+	  await interaction.reply({ content: "Erro ao executar o comando.", ephemeral: true });
 	}
-
-})
+  });
 
 
 
