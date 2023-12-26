@@ -82,6 +82,7 @@ client.on(Events.InteractionCreate, async interaction => {
 	  console.error(error);
 	  await interaction.reply({ content: "Erro ao executar o comando.", ephemeral: true });
 	}
+	
   });
 
 
