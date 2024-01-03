@@ -49,7 +49,7 @@ client.login(TOKEN);
 
 client.on(Events.InteractionCreate, async interaction => {
 
-	if (interaction.isStringSelectMenu()){
+	if(interaction.isStringSelectMenu()){
         const selected = interaction.values[0]
         if (selected == "javascript"){
             await interaction.reply("Documentação do Javascript: https://developer.mozilla.org/en-US/docs/Web/JavaScript")
@@ -66,12 +66,12 @@ client.on(Events.InteractionCreate, async interaction => {
 		}
     }
 
-	if(!interaction.isCommand()) {
+	if(!interaction.isCommand()){
 	  return;
 	}
   
 	const command = client.commands.get(interaction.commandName);
-	if(!command) {
+	if(!command){
 	  console.error("Comando não encontrado!");
 	  return;
 	}
